@@ -80,6 +80,15 @@ namespace Game.PlaceableItems
             IsPlaceable = false;
         }
 
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            if (!_collider2D.isTrigger) return;
+
+            if (!other.TryGetComponent(out PlaceableItem placableItem)) return;
+            _spriteRenderer.color = _unableToPlaceColor;
+            IsPlaceable = false;
+        }
+
         private void OnTriggerExit2D(Collider2D other)
         {
             if (!_collider2D.isTrigger) return;
